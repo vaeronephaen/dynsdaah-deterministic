@@ -263,9 +263,9 @@ go-to: menu
 
 @public_opinion
 on-arrival: {!
-Q.pro_republic_disp = Math.floor(Q.pro_republic);
-Q.nationalism_disp = Math.floor(Q.nationalism);
-Q.socialism_disp = Math.floor(Q.socialism);
+Q.pro_republic_disp = Math.round(Q.pro_republic);
+Q.nationalism_disp = Math.round(Q.nationalism);
+Q.socialism_disp = Math.round(Q.socialism);
 !}
 view-if: (((not historical_mode) or game_over) and not rubicon) or game_over
 go-to: election_algorithm
@@ -480,7 +480,7 @@ go-to: menu
 
 [? if dnef_formed: <span style="color: #BFC8CC;">**DNEF**</span> - <i>Deutschnationale Einheitsfront</i> (German National Unity Front) - A "presidential" party founded by Chancellor Kurt von Schleicher and his allies, this movement embraces a syncretic ideology that defies easy categorization within the political spectrum. At its core, it is built on militarism, nationalism, and corporatism. The party garners support from urbanites, blue-collar workers, the middle classes, and even some of the unemployed, all united by their shared loyalty to the chancellor. ?]
 
-[? if dnef_formed: Current relations: [+ dnef_relation : relationships +] ?]
+[? if dnef_formed: Current relations: [+ dnef_relation : relationships +] [+ dnef_relation +] ?]
 
 <span style="color: #c00000;">**SPD**</span> - *Sozialdemokratische Partei Deutschlands* (Social Democratic Party of Germany) - this is us. We are a socialist and democratic party of the working class. We are the heirs of the legacy of Marx and Engels, Lassalle and Bebel. We are the foremost defenders of the Republic. The modern <span style="color: #c00000;">**SPD**</span> was formed from a merger of the "Majority" <span style="color: #c00000;">**SPD**</span>, which supported the Great War, and the "Independent" <span style="color: #c00000;">**SPD**</span> or <span style="color: #D47B9B;">**USPD**</span>, which opposed the war.
 
@@ -488,41 +488,41 @@ go-to: menu
 
 [? if cvp_formed: <span style="color: #000000;">**[+ z_party_name +]**</span> - <i>Christliche Volkspartei</i> (Christian People's Party) - a center-right to right-wing Christian party formed out of a merger between the Catholic <span style="color: #000000;">Center Party</span> and right-wing Protestant <span style="color: #3E88B3;">**DNVP**</span>. Our relations are much rockier than they were with the <span style="color: #000000;">Center</span>. They are often associated with the <span style="color: #A2D8E0;">**BVP**</span> (Bavarian People's Party), which represents Catholics in <span style="color: #00CCFF;">Bavaria</span>. The party is split into many factions, being largely divided by religion and former party status. [? if cvp_ideology == "Left" or cvp_ideology == "Moderate": The party seeks to emulate the <span style="color: #0087DC;">Tory</span> conservatives in <span style="color: #C8102E;">Great Britain</span>?][? if cvp_ideology == "Right": The party's current ideology is not too dissimilar to that of the former <span style="color: #3E88B3;">**DNVP**</span>?]. ?]
 
-Current relations: [+ z_relation : relationships +]
+Current relations: [+ z_relation : relationships +] [+ z_relation +]
 
 [? if not lvp_formed: [? if started: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not started: <span style="color: #D3C24D;">**DDP**</span> ?] - [? if ddp_name == "DDP" or not ddp_name: <i>Deutsche Demokratische Partei</i> (German Democratic Party)?][? if ddp_name == "DStP": <i>Deutsche Staatspartei</i> (German State Party)?] - [? if ddp_name == "DDP" or not ddp_name: a left-liberal party, popular among the intelligentsia and educated middle class. Although, they have been shifting towards the right over the years. They have often been in coalitions with us. ?][? if ddp_name == "DStP": a liberal party, waning in popularity among the intelligentsia and middle class. [? if dstp_collapsed == 0: They have shifted considerably to the right in recent years and have merged with the political wing of the mildly antisemitic Young German Order in an effort to revive their party.?][? if dstp_collapsed == 1: They have shifted considerably to the right in recent years and have merged with the political wing of the mildly antisemitic Young German Order in an effort to revive their party. Furthermore, the Young German Order has broken off, essentially just leaving the <span style="color: #D3C24D;">**DDP**</span> with a different name.?] They have often been in coalitions with us. ?] ?]
 
-[? if not lvp_formed: Current relations: [+ ddp_relation : relationships +] ?]
+[? if not lvp_formed: Current relations: [+ ddp_relation : relationships +] [+ ddp_relation +] ?]
 
 [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span> - <i>Deutsche Volkspartei</i> (German People's Party) - a conservative-liberal party founded by Gustav Stresemann, supported by the middle classes, bourgeoisie and industrialists. The industrial and right wing of the party has been gaining noticeable influence in recent years with Stresemann's neglect of party affairs. [? if dvp_ideology == "Right": The industrial wing of the party has succeeded in it's takeover of the party and are much less inclined to work with us.?] We have occasionally been in coalitions. ?]
 
-[? if not lvp_formed and dvp_exist: Current relations: [+ dvp_relation : relationships +] ?]
+[? if not lvp_formed and dvp_exist: Current relations: [+ dvp_relation : relationships +] [+ dvp_relation +] ?]
 
 [? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span> - <i>Liberale Volkspartei</i> (Liberal People's Party) - a liberal party, popular among the bourgeois and the middle class. Formed from a merger of the two former liberal parties, the left-liberal <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and conservative-liberal <span style="color: #C0A054;">**DVP**</span>. Its predecessors have often been in coalitions with us. ?]
 
-[? if lvp_formed: Current relations: [+ lvp_relation : relationships +] ?]
+[? if lvp_formed: Current relations: [+ lvp_relation : relationships +] [+ lvp_relation +] ?]
 
 [? if kvp_formed: <span style="color: #0087DC;">**KVP**</span> - <i>Konservative Volkspartei</i> (Conservative People's Party) - a moderate right-wing conservative nationalist party, supported by rural workers, former aristocracy, landowners and conservative Lutherans. The party seeks to emulate the <span style="color: #0087DC;">Tory</span> conservatives in <span style="color: #C8102E;">Great Britain</span>. ?]
 
-[? if kvp_formed: Current relations: [+ kvp_relation : relationships +] ?]
+[? if kvp_formed: Current relations: [+ kvp_relation : relationships +] [+ kvp_relation +] ?]
 
 [? if not cvp_formed: <span style="color: #3E88B3;">**DNVP**</span> - <i>Deutschnationale Volkspartei</i> (German National People's Party) - a right-wing nationalist-conservative party, with authoritarian, monarchist, and racist elements. It is supported by the former aristocracy, rural landowners, and conservative Lutherans. [? if dnvp_dvp_formed: They have recently merged with the <span style="color: #C0A054;">**DVP**</span>. ?]?]
 
-[? if not cvp_formed: Current relations: [+ dnvp_relation : relationships +]?]
+[? if not cvp_formed: Current relations: [+ dnvp_relation : relationships +] [+ dnvp_relation +]?]
 
 [? if dnf_formed: <span style="color: #003755;">**DNF**</span> - <i>Deutschnationale Front</i> (German National Front) - a far-right nationalist-conservative party, led by Alfred Hugenberg, originally split from the <span style="color: #3E88B3;">**DNVP**</span>. It is supported by a small but loyal base of Hugenberg supporters, consisting of former aristocrats, racists and nationalists. ?]
 
-[? if dnf_formed: Current relations: [+ dnf_relation : relationships +] ?]
+[? if dnf_formed: Current relations: [+ dnf_relation : relationships +] [+ dnf_relation +] ?]
 
 <span style="color: #700000;">**KPD**</span> - *Kommunistische Partei Deutschlands* (German Communist Party) - a radical left-wing offshoot of the <span style="color: #c00000;">**SPD**</span> that emerged in the aftermath of the German Revolution of 1918, they follow the path of Moscow, opposing parliamentary democracy in favor of a <span style="color: #750e0e;">Soviet</span>-style revolution.
 
-Current relations: [+ kpd_relation : relationships +]
+Current relations: [+ kpd_relation : relationships +] [+ kpd_relation +]
 
 [? if sapd_formed: <span style="color: #9B0000;">**SAPD**</span> - <i>Sozialistische Arbeiterpartei Deutschlands</i> (Socialist Worker's Party of Germany) - a party recently formed in a split from the <span style="color: #c00000;">**SPD**</span>, the <span style="color: #9B0000;">**SAPD**</span> is essentially an agglomeration of various left-wing splinter groups between the <span style="color: #c00000;">**SPD**</span> and <span style="color: #700000;">**KPD**</span>. ?]
 
 <span style="color: #7A3C00;">**NSDAP**</span> - *Nationalsozialistische Deutsche Arbeiterpartei* - (National Socialist German Worker's Party, or <span style="color: #7A3C00;">Nazis</span>) - a far-right nationalist and antisemitic party. Led by Adolf Hitler, they attempted a coup in 1923, and were banned for it, but have since been legalized.
 
-Current relations: [+ nsdap_relation : relationships +]
+Current relations: [+ nsdap_relation : relationships +] [+ nsdap_relation +]
 
 **Other parties** - there is a multitude of small, mostly conservative parties, such as the Economic Party of the German Middle Class, the Farmer's Party, the Agricultural League, and others. [? if dnvp_split == 1: They also consist of splinter parties from the <span style="color: #3E88B3;">**DNVP**</span>, as a result of Hugenberg's radical right policies as chairman. ?]Their political position usually lies between the [? if (dvp_exist and not lvp_formed) or not started: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if not dvp_exist and started: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?] and the [? if not cvp_formed: <span style="color: #3E88B3;">**DNVP**</span>?][? if cvp_formed: <span style="color: #003755;">**DNF**</span>?].
 
@@ -565,11 +565,11 @@ Militarization: [+ sa_militancy : militancy +]
 
 **Reichswehr**: [+ reichswehr_strength +] thousand troops. This is Germany's military.
 
-Loyalty: [+ reichswehr_loyalty : loyalty +]
+Loyalty: [+ reichswehr_loyalty : loyalty +] [+ reichswehr_loyalty +]
 
 **Prussian police**: [+ prussian_police_strength +] thousand members.
 
-Loyalty: [+ prussian_police_loyalty : loyalty +]
+Loyalty: [+ prussian_police_loyalty : loyalty +] [+ prussian_police_loyalty +]
 
 
 
@@ -577,55 +577,55 @@ Loyalty: [+ prussian_police_loyalty : loyalty +]
 
 **Internal factions of the** <span style="color: #c00000;">**SPD**</span>
 
-Overall dissent: [+ dissent_percent : dissent +]
+Overall dissent: [+ dissent_percent : dissent +] [+ dissent_percent +]
 
 **Left**
 
 Many leftists are former members of the <span style="color: #D47B9B;">**USPD**</span> (the left-wing, anti-war <span style="color: #D47B9B;">Independent Social Democratic Party</span>), or are young radicals. Many are interested in closer cooperation with the <span style="color: #700000;">**KPD**</span>, and some support extra-parliamentary action.
 
-Strength: [+ left_strength : strength +]
+Strength: [+ left_strength : strength +] [+ left_strength +]
 
-Dissent: [+ left_dissent : dissent +]
+Dissent: [+ left_dissent : dissent +] [+ left_dissent +]
 
 **Centrists**
 
 Centrists in the <span style="color: #c00000;">**SPD**</span> are followers of the doctrine of orthodox <span style="color: #9B0000;">Marxism</span> as expounded by Karl Kautsky and later Rudolf Hilferding. They seek a middle course between reform and revolution, while defending the democratic state.
 
-Strength: [+ center_strength : strength +]
+Strength: [+ center_strength : strength +] [+ center_strength +]
 
-Dissent: [+ center_dissent : dissent +]
+Dissent: [+ center_dissent : dissent +] [+ center_dissent +]
 
 **Labor**
 
 Many <span style="color: #c00000;">**SPD**</span> members are also part of the ADGB, the federation of free trade unions. Their goal is economic reform and benefits for organized workers.
 
-Strength: [+ labor_strength : strength +]
+Strength: [+ labor_strength : strength +] [+ labor_strength +]
 
-Dissent: [+ labor_dissent : dissent +]
+Dissent: [+ labor_dissent : dissent +] [+ labor_dissent +]
 
 **Reformists**
 
 Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy against the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> and <span style="color: #700000;">left</span>. [? if spd_prussia : They are dominant in the state government of Prussia. ?]
 
-Strength: [+ reformist_strength : strength +]
+Strength: [+ reformist_strength : strength +] [+ reformist_strength +]
 
-Dissent: [+ reformist_dissent : dissent +]
+Dissent: [+ reformist_dissent : dissent +] [+ reformist_dissent +]
 
 [? if neorevisionism: **Neorevisionists** ?]
 
 [? if neorevisionism: Neorevisionists focus on defending the republic and expanding democracy, while also expanding the party's base beyond the working class to create a people's party. They support new propaganda methods and extra-parliamentary action in defense of the republic. ?]
 
-[? if neorevisionism: Strength: [+ neorevisionist_strength : strength +] ?]
+[? if neorevisionism: Strength: [+ neorevisionist_strength : strength +] [+ neorevisionist_strength +] ?]
 
-[? if neorevisionism: Dissent: [+ neorevisionist_dissent : dissent +] ?]
+[? if neorevisionism: Dissent: [+ neorevisionist_dissent : dissent +] [+ neorevisionist_dissent +] ?]
 
 [? if social_patriot: **Social Patriots** ?]
 
 [? if social_patriot: Social Patriots combine support for pro-worker social programs with fervent German nationalism and anti-<span style="color: #700000;">communism</span>. Many of those who identify with this tendency seem to be little more than lapdogs of Schleicher[? if dnef_formed :&nbsp;and his <span style="color: #BFC8CC;">**DNEF**</span>?]. Other factions view their positions as contradictory and incoherent[? if schleicher_spd_influence > 5 :, but perhaps they may know best after all..?]. ?]
 
-[? if social_patriot: Strength: [+ social_patriot_strength : strength +] ?]
+[? if social_patriot: Strength: [+ social_patriot_strength : strength +] [+ social_patriot_strength +] ?]
 
-[? if social_patriot: Dissent: [+ social_patriot_dissent : dissent +] ?]
+[? if social_patriot: Dissent: [+ social_patriot_dissent : dissent +] [+ social_patriot_dissent +] ?]
 
 @figures
 title: Figures and Charts
